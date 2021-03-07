@@ -1,17 +1,16 @@
 import board
 import neopixel
 import adafruit_fancyled.adafruit_fancyled as fancy
-
-paleta = [ [0,0,0], [255,0,0], [0,255,0], [0,0,255], [255,255,0], [0,255,255], [255,255,255] ]
+from colors import *
 
 class PixelScreen:
-	screenPixels = []
-	brightness   = 0.25
-	pixels       = []
-	num_leds     = 144
-	fps          = 30
-	screenWidth  = 12
-	screenHeight = 12
+	screenPixels  = []
+	brightness    = 0.25
+	pixels        = []
+	num_leds      = 144
+	fps           = 30
+	screenWidth   = 12
+	screenHeight  = 12
 	
 	def init( self ):
 		self.pixels = neopixel.NeoPixel(board.D18, self.num_leds, brightness=self.brightness, auto_write=False)
@@ -29,7 +28,7 @@ class PixelScreen:
 		for i in range(0, len( mapM) ):
 			for j in range(0, len(mapM[i])):
 				if (mapM[i][j] == 1):
-					self.setPixel( i, j, paleta[ color ] )
+					self.setPixel( i+x, j+y, paleta[ color ] )
 	
 	def setPixel( self, x, y, color ):
 		if (x < self.screenWidth and x >= 0 and y >= 0 and y < self.screenHeight):

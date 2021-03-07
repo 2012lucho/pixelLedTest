@@ -1,15 +1,26 @@
 import random
-import time
 from texto import *
+from frameControl import *
+from screenEntity import *
 from pixelScreen import *
+from colors import *
 
-sc = PixelScreen()
-sc.init()
-sc.setScreen( paleta[0] )
-sc.setScreenMap( letras["Z"], 0, 0, 2 )
+frameControl = FrameControl()
+frameControl.pixelScreen = PixelScreen()
 
-x=0
-y=0
-while True:
-	sc.drawFrame()
-	time.sleep( 1/5 )
+point = ScreenEntity()
+point.setColor( 1 )
+point.setBitmap([[1,1]])
+point.setPx(0)
+point.setPy(0)
+
+pointId = frameControl.addScreenEntity( point )
+
+def newFrame( frameControl ):
+	entity = frameControl.getEntity( pointId )
+	entity.setPx( entity.getPx()+1 )
+
+frameControl.setFrameLoopCallback( newFrame )
+frameControl.init()
+
+
