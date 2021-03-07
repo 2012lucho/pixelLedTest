@@ -5,6 +5,7 @@ class ScreenEntity:
 	color = 0
 	pixelScreen = None
 	bitMap = []
+	scale = 1
 	
 	def setPx( self, x ):
 		self.px = x
@@ -23,7 +24,7 @@ class ScreenEntity:
 		
 	def setBitmap( self, bitMap ):
 		self.bitMap = bitMap
-	
+		
 	def setPixelScreen( self, pS ):
 		self.pixelScreen = pS
 	

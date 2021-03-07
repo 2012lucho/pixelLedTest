@@ -24,15 +24,15 @@ class PixelScreen:
 			for j in range(0, self.screenHeight):
 				self.screenPixels[ i ][ j ] = color
 			
-	def setScreenMap( self, mapM, x, y, color ):
-		for i in range(0, len( mapM) ):
-			for j in range(0, len(mapM[i])):
-				if (mapM[i][j] == 1):
-					self.setPixel( i+x, j+y, paleta[ color ] )
+	def setScreenMap( self, mapM, px, py, color ):
+		for y in range(0, len( mapM) ):
+			for x in range(0, len(mapM[y])):
+				if (mapM[y][x] == 1):
+					self.setPixel( x+px, y+py, paleta[ color ] )
 	
 	def setPixel( self, x, y, color ):
 		if (x < self.screenWidth and x >= 0 and y >= 0 and y < self.screenHeight):
-			self.screenPixels[ x ][ y ] = color
+			self.screenPixels[ y ][ x ] = color
 	
 	def drawFrame( self ):
 		k = self.num_leds - 1
