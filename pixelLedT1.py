@@ -4,23 +4,17 @@ from frameControl import *
 from screenEntity import *
 from pixelScreen import *
 from colors import *
+from letras12x12 import *
+from letras6x6 import *
 
 frameControl = FrameControl()
 frameControl.fps = 10
 frameControl.pixelScreen = PixelScreen()
 
-point = ScreenEntity()
-point.setColor( 1 )
-point.setBitmap(letras["A"])
-point.setPx(0)
-point.setPy(0)
-
-pointId = frameControl.addScreenEntity( point )
-
 text = Text()
-text.setFontArray( letras )
+text.setFontArray( digitos_calc_12x12 )
 text.setColor( 2 )
-text.setText( "HOLA MUNDO" )
+text.setText( "0123456789" )
 
 textId = frameControl.addScreenEntity( text )
 
